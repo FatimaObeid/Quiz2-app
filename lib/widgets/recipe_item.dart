@@ -31,6 +31,15 @@ class RecipeItem extends StatelessWidget {
           ),
 
           const SizedBox(height: 8),
+
+          ...emojiRatings.map(
+            (emojiRatings) => {
+              ElevatedButton(
+                onPressed: onSelectRating,
+                child: Text(emojiRatings),
+              ),
+            },
+          ),
         ],
       ),
     );

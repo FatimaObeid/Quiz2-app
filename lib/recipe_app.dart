@@ -14,13 +14,21 @@ class RecipeApp extends StatefulWidget {
 class _RecipeAppState extends State<RecipeApp> {
   String currentScreen = "recipes-screen";
 
+  void submit() {
+    setState(() {
+      if(selectedRatings.length==recipes.length){
+      currentScreen = "result_screen";
+      }
+    });
+  }
+
+ 
   // selectedRatings is initially filled with empty strings because the rating is not yet given.
   List<String> selectedRatings = List.filled(recipes.length, "");
 
   String topRecipeName() {
     int bestValue = -1;
     String bestName = "";
-    Map<List<String>, int> emojiToValue = {};
 
     for (int i = 0; i < recipes.length; i++) {
       if (selectedRatings[i].isNotEmpty) {
@@ -34,6 +42,14 @@ class _RecipeAppState extends State<RecipeApp> {
     return bestName;
   }
 
+  void get averageRating {
+    for (int i = 0; i < recipes.length; i++) {}
+  }
+
+  void _selectRating(int index, String rating) {
+    selectedRatings[index] = rating;
+  }
+
   void _restart() {
     setState(() {
       selectedRatings = List.filled(recipes.length, "");
@@ -44,6 +60,14 @@ class _RecipeAppState extends State<RecipeApp> {
   @override
   Widget build(BuildContext context) {
     Widget? screenWidget;
+
+    if(currentScreen=='recipes-screen'){
+      screenWidget=RecipesScreen(onSelectRating: onSelectRating, onSubmit: submit);
+    }
+
+    else if(currentScreen=='result-screen'){
+      screenWidget=ResultScreen(averageRating: averageRating`, topRecipeName: topRecipeName, onRestart: onRestart);
+    }
 
     return Scaffold(
       body: screenWidget,

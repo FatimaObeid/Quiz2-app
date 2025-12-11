@@ -18,23 +18,28 @@ class RecipesScreen extends StatelessWidget {
       padding: const EdgeInsets.all(25),
       child: SizedBox(
         width: double.infinity,
-        child: Column(
-          children: [
-            ...recipes.asMap().entries.map((entry) {
-              int index = entry.key;
-              var recipe = entry.value;
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ...recipes.asMap().entries.map((entry) {
+                int index = entry.key;
+                var recipe = entry.value;
 
-              return RecipeItem(
-                recipe: recipe,
-                index: index,
-                onSelectRating: onSelectRating,
-              );
-            }),
+                return RecipeItem(
+                  recipe: recipe,
+                  index: index,
+                  onSelectRating: onSelectRating,
+                );
+              }),
 
-            const SizedBox(height: 20),
+              const SizedBox(height: 20),
 
-            ElevatedButton(onPressed: () {}, child: Text('Submit Ratings')),
-          ],
+              ElevatedButton(
+                onPressed: onSubmit,
+                child: Text('Submit Ratings'),
+              ),
+            ],
+          ),
         ),
       ),
     );
