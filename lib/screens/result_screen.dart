@@ -17,28 +17,30 @@ class ResultScreen extends StatelessWidget {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(30),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              "Average Rating: ${averageRating.toStringAsFixed(1)} ⭐",
-              style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "Average Rating: ${averageRating.toStringAsFixed(1)} ⭐",
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const SizedBox(height: 15),
-            Text(
-              "Top Recipe: $topRecipeName",
-              style: const TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 30),
+              const SizedBox(height: 15),
+              Text(
+                "Top Recipe: $topRecipeName",
+                style: const TextStyle(fontSize: 20),
+              ),
+              const SizedBox(height: 30),
 
-            ElevatedButton(
-              onPressed: onRestart,
-              child: const Text("Restart"),
-            ),
-          ],
+              ElevatedButton(
+                onPressed: onRestart,
+                child: const Text("Restart"),
+              ),
+            ],
+          ),
         ),
       ),
     );

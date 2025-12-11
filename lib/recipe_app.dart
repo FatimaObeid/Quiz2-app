@@ -15,14 +15,12 @@ class _RecipeAppState extends State<RecipeApp> {
   String currentScreen = "recipes-screen";
 
   // selectedRatings is initially filled with empty strings because the rating is not yet given.
-  List<String> selectedRatings = List.filled(
-    recipes.length,
-    "",
-  );
+  List<String> selectedRatings = List.filled(recipes.length, "");
 
   String topRecipeName() {
     int bestValue = -1;
     String bestName = "";
+    Map<List<String>, int> emojiToValue = {};
 
     for (int i = 0; i < recipes.length; i++) {
       if (selectedRatings[i].isNotEmpty) {
@@ -49,12 +47,7 @@ class _RecipeAppState extends State<RecipeApp> {
 
     return Scaffold(
       body: screenWidget,
-      backgroundColor: const Color.fromARGB(
-        255,
-        73,
-        168,
-        122,
-      ),
+      backgroundColor: const Color.fromARGB(255, 73, 168, 122),
     );
   }
 }

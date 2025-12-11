@@ -20,6 +20,7 @@ class RecipeItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text(index.toString()),
           Text(
             "Recipe name goes here",
             style: const TextStyle(
